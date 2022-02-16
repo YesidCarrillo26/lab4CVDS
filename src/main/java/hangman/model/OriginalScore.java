@@ -13,7 +13,10 @@ public class OriginalScore implements GameScore{
      */
     @Override
     public int calculateScore(int correctCount, int incorrectCount) throws HangmanException{
+        int resultado = 100;
         if (incorrectCount < 0 || correctCount < 0) throw new HangmanException(HangmanException.NEGATIVE_NUMBER);
-        return 0;
+        resultado -= (incorrectCount * 10);
+        if (resultado < 0) resultado = 0;
+        return resultado;
     }
 }

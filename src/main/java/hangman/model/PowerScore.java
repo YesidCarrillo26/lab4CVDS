@@ -14,6 +14,19 @@ public class PowerScore implements GameScore{
     @Override
     public int calculateScore(int correctCount, int incorrectCount) throws HangmanException{
         if (incorrectCount < 0 || correctCount < 0) throw new HangmanException(HangmanException.NEGATIVE_NUMBER);
-        return 0;
+        int resultado = 0;
+        resultado = ((power(5,correctCount))-(8*incorrectCount));
+        if (resultado > 500) resultado = 500;
+        else if (resultado < 0) resultado = 0;
+        return resultado;
+    }
+
+    //Implementacion auxiliar
+    private int power(int number,int power){
+        int result = number;
+        for (int i = 1; i < power; i++){
+            result *= number;
+        }
+        return result;
     }
 }

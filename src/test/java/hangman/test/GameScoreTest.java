@@ -19,18 +19,36 @@ public class GameScoreTest {
      * Invalidos: incorrectCount < 0
      * Invalidos: correctCount < 0
      */
-    //Falta programar
     @Test
     public void validTestOriginalScore(){
         originalScore = new OriginalScore();
         try {
             resultado = originalScore.calculateScore(5, 4);
-            Assert.assertTrue(resultado >= 0 && resultado <= 100);
+            Assert.assertTrue(resultado == 60);
         }
         catch (Exception e){ }
     }
 
-    //Falta programar
+    @Test
+    public void validTestOriginalScore1(){
+        originalScore = new OriginalScore();
+        try {
+            resultado = originalScore.calculateScore(5, 9);
+            Assert.assertTrue(resultado == 10);
+        }
+        catch (Exception e){ }
+    }
+
+    @Test
+    public void validTestOriginalScore2(){
+        originalScore = new OriginalScore();
+        try {
+            resultado = originalScore.calculateScore(5, 1);
+            Assert.assertTrue(resultado == 90);
+        }
+        catch (Exception e){ }
+    }
+
     @Test
     public void validTestOriginalScoreIncorrectScoreInvalid(){
         originalScore = new OriginalScore();
@@ -78,7 +96,7 @@ public class GameScoreTest {
         try {
             bonusScore = new BonusScore();
             resultado = bonusScore.calculateScore(5, 7);
-            Assert.assertTrue(resultado > 0);
+            Assert.assertTrue(resultado == 15);
         }
         catch (Exception e){}
     }
@@ -92,6 +110,26 @@ public class GameScoreTest {
             Assert.assertTrue(resultado == 0);
         } catch (Exception e){}
     }
+
+    @Test
+    public void bonusScoreSetTo5(){
+        try {
+            bonusScore = new BonusScore();
+            resultado = bonusScore.calculateScore(1, 1);
+            Assert.assertTrue(resultado == 5);
+        } catch (Exception e){}
+    }
+
+    @Test
+    public void bonusScoreSetTo995AlmostMax(){
+        try {
+            bonusScore = new BonusScore();
+            resultado = bonusScore.calculateScore(100, 1);
+            //System.out.println(resultado);
+            Assert.assertTrue(resultado == 995);
+        } catch (Exception e){}
+    }
+
     @Test
     public void validTestBonusScoreInvalidScore(){
         bonusScore = new BonusScore();
@@ -124,17 +162,16 @@ public class GameScoreTest {
      * Invalidos: correctCount < 0
      */
 
-    //Falta programar
     @Test
     public void resultPowerScoreValid(){
         powerScore = new PowerScore();
         try {
             resultado = powerScore.calculateScore(3,1);
-            Assert.assertTrue(resultado > 0);
+            Assert.assertTrue(resultado == 117);
         }catch (Exception e){ }
     }
 
-    //Falta programar
+
     @Test
     public void resultPowerScoreBiggerThan500(){
         powerScore = new PowerScore();
@@ -145,7 +182,26 @@ public class GameScoreTest {
         catch (Exception e){}
     }
 
-    //Falta programar
+    @Test
+    public void resultPowerScoreBiggerThan500with1Mistake(){
+        powerScore = new PowerScore();
+        try {
+            resultado = powerScore.calculateScore(4,16);
+            Assert.assertTrue(resultado == 497);
+        }
+        catch (Exception e){}
+    }
+
+    @Test
+    public void resultPowerScoreSmallestPossible(){
+        powerScore = new PowerScore();
+        try {
+            resultado = powerScore.calculateScore(2,3);
+            Assert.assertTrue(resultado == 1);
+        }
+        catch (Exception e){}
+    }
+
     @Test
     public void resultPowerScoreIncorrectScoreBiggerThan500(){
         powerScore = new PowerScore();
