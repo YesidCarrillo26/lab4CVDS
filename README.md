@@ -1,3 +1,7 @@
+## Autores
+## Yesid Carrillo
+## Ronaldo Henao
+
 ### Escuela Colombiana de Ingeniería
 
 ### Procesos de Desarrollo de Software
