@@ -34,6 +34,9 @@ public class GUI {
     private HangmanDictionary dictionary;
     private HangmanPanel hangmanPanel;
 
+    private GameScore gameScore;
+    private OriginalScore originalScore;
+
     private MainFrameController mainFrameController;
 
     private SplashController splashController;
@@ -48,14 +51,17 @@ public class GUI {
         this.language = factoryMethod.createLanguage();
         this.dictionary = factoryMethod.createDictionary();
         this.hangmanPanel = factoryMethod.createHangmanPanel();
+        //this.originalScore = factoryMethod.createOriginalScore();
+        this.gameScore = factoryMethod.createGameScore();
     }
 
     @Inject
     // Use Guice constructor
-    public GUI(Language language, HangmanDictionary dictionary, HangmanPanel hangmanPanel){
+    public GUI(Language language, HangmanDictionary dictionary, HangmanPanel hangmanPanel, GameScore gameScore){
         this.language = language;
         this.dictionary= dictionary;
         this.hangmanPanel = hangmanPanel;
+        this.gameScore = gameScore;
     }
 
     //method: setup
